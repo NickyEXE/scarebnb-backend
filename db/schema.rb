@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_224501) do
+ActiveRecord::Schema.define(version: 2021_09_07_221715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "apartments", force: :cascade do |t|
+    t.string "unit"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.integer "rent"
+    t.string "image"
+    t.string "hazards"
+    t.bigint "house_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_apartments_on_house_id"
+  end
 
   create_table "houses", force: :cascade do |t|
     t.string "name"
@@ -26,4 +39,5 @@ ActiveRecord::Schema.define(version: 2021_09_02_224501) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "apartments", "houses"
 end
