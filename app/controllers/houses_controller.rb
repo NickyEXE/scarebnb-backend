@@ -13,7 +13,7 @@ class HousesController < ApplicationController
   private
 
   def house_params
-    params.require(:house).permit(:name, :address, :city, :state, :haunting, :image_url)
+    params.require(:house).permit(:name, :address, :city, :state, :haunting, :image_url, :user_id)
   end
 
 end
